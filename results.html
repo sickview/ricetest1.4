@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Mystery+Quest&display=swap" rel="stylesheet">
+   
+    
+    <style>
+       html {
+        background: rgb(247, 241, 223);
+}
+
+body {
+    text-align: center;
+}
+
+#topContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    #topText {
+        font-size: 18px; /* Adjust font size */
+        color: black; /* Adjust text color */
+        font-family: "Mystery Quest", system-ui; /* Apply Mystery Guest font */
+        font-style: normal;
+        font-weight: 100;
+        font-size: small;
+    }
+
+
+    #topImage {
+        width: 100px;
+        height: auto;
+    }
+
+
+#list {
+    text-align: left;
+    line-height: 2; /* Add line spacing between list items */
+}
+
+
+/* Custom checkbox style */
+input[type="checkbox"] {
+    -webkit-appearance: none; /* Remove default appearance */
+    -moz-appearance: none; /* Remove default appearance */
+    appearance: none; /* Remove default appearance */
+    width: 1.4em; /* Adjust width */
+    height: 1.4em; /* Adjust height */
+    border: 1px solid #000000; /* Border color for the checkbox */
+    border-radius: 2px; /* Border radius for the checkbox */
+    margin-right: 10px; /* Add some spacing between checkbox and label */
+    cursor: pointer; /* Add pointer cursor */
+    position: relative; /* Position relative for pseudo-element */
+    background-color: white;
+}
+
+/* Checkmark symbol */
+input[type="checkbox"]::before {
+    content: '\2713'; /* Unicode checkmark symbol */
+    font-size: 0.8em; /* Adjust size of checkmark */
+    color: white; /* Color of checkmark */
+    position: absolute; /* Position absolute to place the checkmark inside the checkbox */
+    top: 50%; /* Align checkmark vertically */
+    left: 50%; /* Align checkmark horizontally */
+    transform: translate(-50%, -50%); /* Center the checkmark */
+    opacity: 0; /* Hide the checkmark by default */
+}
+
+/* Custom checkbox style for checked state */
+input[type="checkbox"]:checked {
+    background-color: green; /* Background color when checked */
+}
+
+/* Custom checkbox style for checked state */
+input[type="checkbox"]:checked::before {
+    opacity: 1; /* Show the checkmark when the checkbox is checked */
+}
+
+
+
+
+h1 {
+    font-size: 150%;
+    color: rgb(0, 0, 0);
+    padding: 0px;
+    margin: 0px;
+    font-weight: lighter;
+}
+
+.button {
+    color: #058416;
+    font-size: 14px; /* Reduced font size */
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Reduced letter spacing */
+    padding: 10px 30px; /* Reduced padding */
+    border-radius: 20px; /* Reduced border radius */
+    display: inline-block;
+    font-weight: 500;
+    transition: all 0.4s ease-in-out;
+    background-size: 152% 100%;
+    background: #f3eee1;
+    border: 2px solid rgba(10, 177, 16, 0.378);
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: rgb(2, 79, 5); /* Same green as the border color */
+    color: white; /* Change text color to ensure readability */
+}
+
+/* Custom style for the "Calculate My Score" button */
+.calculate-button {
+    background-color: green; /* Set permanent green background */
+    color: white; /* Set text color to white */
+    border: 1px solid rgb(0, 0, 0);
+    transition: background-color 0.4s ease-in-out; /* Add transition effect */
+}
+
+/* Hover effect for the "Calculate My Score" button */
+.calculate-button:hover {
+    background-color: darkgreen; /* Darker green on hover */
+}
+
+/* Adjust margin for the introductory paragraphs */
+#toHide p {
+    margin: 0; /* Set margin to 0 */
+    font-size: 24px; /* Increase font size */
+    font-family: 'DM Sans', sans-serif; /* Use DM Sans font */
+    font-weight: lighter;
+}
+
+#list ol {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: lighter;
+    list-style-type: none;
+    padding-left: 0;
+    counter-reset: item;
+}
+.backbutton {
+    font-family: 'DM Sans', sans-serif; /* Add DM Sans font */
+    color: #c0f7c8;
+    font-size: 14px; /* Reduced font size */
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Reduced letter spacing */
+    padding: 10px 30px; /* Reduced padding */
+    border-radius: 20px; /* Reduced border radius */
+    display: inline-block;
+    font-weight: 500;
+    transition: all 0.4s ease-in-out;
+    background-size: 152% 100%;
+    background-color: rgb(2, 79, 5);
+    border: 1px solid rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+
+.backbutton:hover {
+    background-color: rgb(2, 79, 5); /* Same green as the border color */
+    color: white; /* Change text color to ensure readability */
+}       
+#result {
+    font-family: 'DM Sans', sans-serif; /* Add DM Sans font */
+}
+    </style>
+</head>
+<body>
+    <div id="topContainer">
+        <div id="topText">Rice Purity Test</div>
+        <img id="topImage" src="Screenshot 2024-05-07 at 03.36.56.png" alt="Description of the image">
+    </div>
+<div id ="Container">
+    <p>
+        <div id="toHide">
+            <p style="font-family: 'DM Sans', sans-serif; font-weight: normal;">This purity test is tailored down to Nigerians and that's why it is called <span style="font-weight: bold;">
+            <p style="font-weight: bold; font-family: 'DM Sans';">The Rice Purity Test - <span style="color:rgb(9, 122, 9);">Nigerian edition 😉</span></p><br>
+            <img src="line_design-removebg-preview.png" alt="Description of the image" style="width: 600px; height: auto;"><br><br><br><br><br><br><br><br><br><br>
+        </div>
+        <div id="result" style="font-family: 'DM Sans', sans-serif;">
+            <h1 style="font-weight: 300;">Your score:</h1>
+            <h2 id="score" style="font-size: 4em;"></h2>
+            <p id="scoreText" style="color: rgb(130, 129, 129); font-size: 1.5em;">  </p>
+        </div>
+        
+        
+        <a href="index.html" class="backbutton" style="font-family: 'DM Sans', sans-serif;">Take test again</a>
+
+</div>
+    <script>
+        // Retrieve the score from the URL query parameter
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const score = urlParams.get('score');
+
+        // Display the score on the page
+        document.getElementById('score').innerText = score + "%";
+
+        // Display text based on score range
+let scoreText = "";
+let scoreColor = ""; // Color variable for the score text
+if (score == 100) {
+    scoreText = "WHAT ARE YOU DOING WITH YOUR LIFE??";
+    scoreColor = "rgb(0, 128, 0)"; // Green color for highest score
+} else if (score >= 90 && score <= 99) {
+    scoreText = "Jesus baby, you're doing well!";
+    scoreColor = "rgb(34, 139, 34)"; // Dark green color for high score
+} else if (score >= 80 && score <= 89) {
+    scoreText = "Agba!";
+    scoreColor = "rgb(50, 205, 50)"; // Lime green color for good score
+} else if (score >= 70 && score <= 79) {
+    scoreText = "Ehn, we fit squeeze you in sha.";
+    scoreColor = "rgb(173, 255, 47)"; // Green-yellow color for moderate score
+} else if (score >= 60 && score <= 69) {
+    scoreText = "Not bad, not bad!";
+    scoreColor = "rgb(255, 255, 0)"; // Yellow color for moderate score
+} else if (score >= 50 && score <= 59) {
+    scoreText = "Hmmm, you don dey go far oo!";
+    scoreColor = "rgb(255, 215, 0)"; // Gold color for moderate score
+} else if (score >= 40 && score <= 49) {
+    scoreText = "Ahh, mad oo!";
+    scoreColor = "rgb(255, 165, 0)"; // Orange color for moderate score
+} else if (score >= 30 && score <= 39) {
+    scoreText = "Slow down!!! Ehn fine boy/girl.";
+    scoreColor = "rgb(255, 69, 0)"; // Orange-red color for low score
+} else if (score >= 20 && score <= 29) {
+    scoreText = "No no, it's far gone, cos what???";
+    scoreColor = "rgb(178, 34, 34)"; // Firebrick color for low score
+} else if (score >= 10 && score <= 19) {
+    scoreText = "Nahhh, na you suppose dey rule that hot place down there.";
+    scoreColor = "rgb(128, 0, 128)"; // Dark red color for low score indicating danger
+} else {
+    scoreText = "OTILO FAR FAR!";
+    scoreColor = "rgb(139, 0, 0)"; // Purple color for very low score
+}
+
+
+
+// Apply the score text and color to the respective elements
+document.getElementById('scoreText').innerText = scoreText;
+document.getElementById('score').style.color = scoreColor; // Apply color to score
+    </script>
+</body>
+</html>

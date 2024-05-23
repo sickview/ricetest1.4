@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+        
+    <head>  
+        <!-- META -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Mystery+Quest&display=swap" rel="stylesheet">
+        
+      
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <!-- Title -->
+        <title>The Rice Purity Test</title>
+        <link rel="shortcut icon" type="image/png" href="favicon.png">
+        <a href="results.html" id="resultLink" style="display: none;">View Results</a>
+    </head>
+
+
+        <!-- Style -->  
+         <style>
+    * {
+        margin: 5px;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        background: rgb(247, 241, 223);
+    }
+
+    body {
+        text-align: center;
+        display: grid;
+        background: rgb(247, 241, 223);
+    }
+
+    #button-container {
+        place-self: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #topContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    #topText {
+        font-size: 18px;
+        color: black;
+        font-family: "Mystery Quest", system-ui;
+        font-style: normal;
+        font-weight: 100;
+        font-size: small;
+    }
+
+    #topImage {
+        width: 100px;
+        height: auto;
+    }
+
+    #list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .checkbox-container label {
+        margin: 0;
+    }
+
+    .checkbox-item {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 18px;
+        gap: 2px;
+    }
+
+    .checkbox-number {
+        margin-right: 10px;
+        font-size: 16px;
+        width: 30px;
+        display: inline-block;
+    }
+
+    input[type=checkbox] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 1.4em;
+        height: 1.4em;
+        border: 1px solid #000000;
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        background-color: white;
+        flex-shrink: 0; /* Prevent the checkbox from shrinking */
+        margin-right: 10px;
+    }
+
+    input[type=checkbox]::before {
+        content: '\2713';
+        font-size: 1.0em;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    input[type=checkbox]:checked {
+        background-color: green;
+    }
+
+    input[type=checkbox]:checked::before {
+        opacity: 1;
+    } 
+
+    label {
+        font-size: 16px;
+        white-space: normal; /* Allow line breaks */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1; /* Allow the label to grow and shrink */
+    }
+
+    .checkbox-item label {
+        align-self: flex-start; /* Align label text to the top */
+        text-align: left;
+    }
+
+    .button {
+        color: #058416;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 10px 30px;
+        border-radius: 20px;
+        display: inline-block;
+        font-weight: 500;
+        transition: all 0.4s ease-in-out;
+        background-size: 152% 100%;
+        background: #f3eee1;
+        border: 2px solid rgba(10, 177, 16, 0.378);
+        text-decoration: none;
+        font-family: "DM Sans", sans-serif;
+        height: 40px;
+        margin-inline: 10px;
+    }
+
+    .button:hover {
+        background-color: rgb(2, 79, 5);
+        color: white;
+    }
+
+    .calculate-button {
+        background-color: green;
+        color: white;
+        border: 1px solid rgb(0, 0, 0);
+        transition: background-color 0.4s ease-in-out;
+        font-family: "DM Sans", sans-serif;
+    }
+
+    .calculate-button:hover {
+        background-color: darkgreen;
+    }
+
+    #toHide p {
+        margin: 0;
+        font-size: 20px;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: lighter;
+    }
+</style>
+        
+        
+    </head>
+    
+    <body>
+        <div id="topContainer">
+            <div id="topText">Rice Purity Test</div>
+            <img id="topImage" src="Screenshot 2024-05-07 at 03.36.56.png" alt="Description of the image">
+        </div>
+
+        <p>
+            <div id="toHide">
+                <p style="font-weight: normal;">This purity test is tailored down to Nigerians and that's why it is called</p>
+                <p style="font-weight: bold;">The Rice Purity Test - <span style="color:rgb(9, 122, 9);">Nigerian edition 😉</span></p><br>
+                <img src="line_design-removebg-preview.png" alt="Description of the image" style="width: 450px; height: auto;">
+
+                <br><br>
+            </div>
+        </p> 
+        
+        <form>
+            <div class="checkbox-item">
+                <span class="checkbox-number">1.</span>
+                <input type="checkbox" id="question1" name="question1">
+                <label for="question1">Considered sleeping with a married man for money?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">2.</span>
+                <input type="checkbox" id="question2" name="question2">
+                <label for="question2">Been a side chick?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">3.</span>
+                <input type="checkbox" id="question3" name="question3">
+                <label for="question3">Crushed on a married man/woman?</label>
+            </div>
+            <div class="checkbox-item" style="font-size: 12px;">
+                <span class="checkbox-number">4.</span>
+                <input type="checkbox" id="question4" name="question4">
+                <label for="question4">Got caught by a married man/woman's partner while in bed with them?</label>
+            </div>            
+            <div class="checkbox-item">
+                <span class="checkbox-number">5.</span>
+                <input type="checkbox" id="question5" name="question5">
+                <label for="question5">Gone on a date with a married man/woman?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">6.</span>
+                <input type="checkbox" id="question6" name="question6">
+                <label for="question6">Slept with your boyfriend's father?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">7.</span>
+                <input type="checkbox" id="question7" name="question7">
+                <label for="question7">Slept with your boyfriends uncle?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">8.</span>
+                <input type="checkbox" id="question8" name="question8">
+                <label for="question8">Slept with your best friend's boyfriend?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">9.</span>
+                <input type="checkbox" id="question9" name="question9">
+                <label for="question9">Slept with your boyfriends best friend?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">10.</span>
+                <input type="checkbox" id="question10" name="question10">
+                <label for="question10">Slept with someone to pay off a debt?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">11.</span>
+                <input type="checkbox" id="question11" name="question11">
+                <label for="question11">Slept with a colleague?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">12.</span>
+                <input type="checkbox" id="question12" name="question12">
+                <label for="question12">Fucked and sucked for an upgrade in your grade?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">13.</span>
+                <input type="checkbox" id="question13" name="question13">
+                <label for="question13">Fucked and sucked for A?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">14.</span>
+                <input type="checkbox" id="question14" name="question14">
+                <label for="question14">Had a threesome with your boyfriend/girlfriend and best friend?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">15.</span>
+                <input type="checkbox" id="question15" name="question15">
+                <label for="question15">Dated your best friend's partner while they were still dating?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">16.</span>
+                <input type="checkbox" id="question16" name="question16">
+                <label for="question16">Dated someone and their best friend?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">17.</span>
+                <input type="checkbox" id="question17" name="question17">
+                <label for="question17">Impregnated a girl and her best friend?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">18.</span>
+                <input type="checkbox" id="question18" name="question18">
+                <label for="question18">Impregnated a girl and told her to abort it?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">19.</span>
+                <input type="checkbox" id="question19" name="question19">
+                <label for="question19">Given a girl an abortion pill without her knowledge?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">20.</span>
+                <input type="checkbox" id="question20" name="question20">
+                <label for="question20">Passed on an STD?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">21.</span>
+                <input type="checkbox" id="question21" name="question21">
+                <label for="question21">Gotten a bbl?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">22.</span>
+                <input type="checkbox" id="question22" name="question22">
+                <label for="question22">Undergone abortion?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">23.</span>
+                <input type="checkbox" id="question23" name="question23">
+                <label for="question23">Lied about being a virgin?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">24.</span>
+                <input type="checkbox" id="question24" name="question24">
+                <label for="question24">Slept with your boyfriend and his brother?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">25.</span>
+                <input type="checkbox" id="question25" name="question25">
+                <label for="question25">Slept with another person in the same apartment with your partner?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">26.</span>
+                <input type="checkbox" id="question26" name="question26">
+                <label for="question26">Caught your boyfriend sleeping with another man?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">27.</span>
+                <input type="checkbox" id="question27" name="question27">
+                <label for="question27">Caught your girlfriend sleeping with another woman?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">28.</span>
+                <input type="checkbox" id="question28" name="question28">
+                <label for="question28">Dated a minor?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">29.</span>
+                <input type="checkbox" id="question29" name="question29">
+                <label for="question29">Slept with a minor?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">30.</span>
+                <input type="checkbox" id="question30" name="question30">
+                <label for="question30">Left a man because he couldn't afford a wig?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">31.</span>
+                <input type="checkbox" id="question31" name="question31">
+                <label for="question31">Billed a guy/girl on the first date?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">32.</span>
+                <input type="checkbox" id="question32" name="question32">
+                <label for="question32">Asked a guy/girl to pay your house rent?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">33.</span>
+                <input type="checkbox" id="question33" name="question33">
+                <label for="question33">Been dragged on anonymous?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">34.</span>
+                <input type="checkbox" id="question34" name="question34">
+                <label for="question34">Taken nudes?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">35.</span>
+                <input type="checkbox" id="question35" name="question35">
+                <label for="question35">Sent nudes?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">36.</span>
+                <input type="checkbox" id="question36" name="question36">
+                <label for="question36">Sent nudes to a minor?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">37.</span>
+                <input type="checkbox" id="question37" name="question37">
+                <label for="question37">Gotten nudes from a minor?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">38.</span>
+                <input type="checkbox" id="question38" name="question38">
+                <label for="question38">Shared nudes of a minor?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">39.</span>
+                <input type="checkbox" id="question39" name="question39">
+                <label for="question39">Had your nudes casted on Dropbox?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">40.</span>
+                <input type="checkbox" id="question40" name="question40">
+                <label for="question40">Airdropped your nudes?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">41.</span>
+                <input type="checkbox" id="question41" name="question41">
+                <label for="question41">Intentionally leaked nudes?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">42.</span>
+                <input type="checkbox" id="question42" name="question42">
+                <label for="question42">Snuck out of the house for a party?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">43.</span>
+                <input type="checkbox" id="question43" name="question43">
+                <label for="question43">Snuck out of the house to see your boyfriend/girlfriend?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">44.</span>
+                <input type="checkbox" id="question44" name="question44">
+                <label for="question44">Travelled to another state to see your boyfriend, without your parents' knowledge?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">45.</span>
+                <input type="checkbox" id="question45" name="question45">
+                <label for="question45">Left school for a man?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">46.</span>
+                <input type="checkbox" id="question46" name="question46">
+                <label for="question46">Holy girl at home, baddie outside?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">47.</span>
+                <input type="checkbox" id="question47" name="question47">
+                <label for="question47">Holy boy at home, brostitute outside?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">48.</span>
+                <input type="checkbox" id="question48" name="question48">
+                <label for="question48">You don thief?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">49.</span>
+                <input type="checkbox" id="question49" name="question49">
+                <label for="question49">Stolen from your parent's wallet?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">50.</span>
+                <input type="checkbox" id="question50" name="question50">
+                <label for="question50">Stolen your friend's pant?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">51.</span>
+                <input type="checkbox" id="question51" name="question51">
+                <label for="question51">Changed your grade in class?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">52.</span>
+                <input type="checkbox" id="question52" name="question52">
+                <label for="question52">Changed your position in class?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">53.</span>
+                <input type="checkbox" id="question53" name="question53">
+                <label for="question53">Been flogged terribly by your parents?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">54.</span>
+                <input type="checkbox" id="question54" name="question54">
+                <label for="question54">Been attracted to a family member?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">55.</span>
+                <input type="checkbox" id="question55" name="question55">
+                <label for="question55">Had sex with a family member?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">56.</span>
+                <input type="checkbox" id="question56" name="question56">
+                <label for="question56">Had sex with a non-family member?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">57.</span>
+                <input type="checkbox" id="question57" name="question57">
+                <label for="question57">Been stranded in a restaurant/a club?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">58.</span>
+                <input type="checkbox" id="question58" name="question58">
+                <label for="question58">Dined and dashed?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">59.</span>
+                <input type="checkbox" id="question59" name="question59">
+                <label for="question59">Had a one night stand?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">60.</span>
+                <input type="checkbox" id="question60" name="question60">
+                <label for="question60">Suffered body dysmorphia?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">61.</span>
+                <input type="checkbox" id="question61" name="question61">
+                <label for="question61">Been body-shamed by your partner?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">62.</span>
+                <input type="checkbox" id="question62" name="question62">
+                <label for="question62">Sold something for your skin care?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">63.</span>
+                <input type="checkbox" id="question63" name="question63">
+                <label for="question63">Missed exam to meet your babe?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">64.</span>
+                <input type="checkbox" id="question64" name="question64">
+                <label for="question64">Failed a course because of your babe?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">65.</span>
+                <input type="checkbox" id="question65" name="question65">
+                <label for="question65">Followed your babe from secondary school to university?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">66.</span>
+                <input type="checkbox" id="question66" name="question66">
+                <label for="question66">Gotten your phone seized by your babe?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">67.</span>
+                <input type="checkbox" id="question67" name="question67">
+                <label for="question67">Crushed on your roommate/flatmate?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">68.</span>
+                <input type="checkbox" id="question68" name="question68">
+                <label for="question68">Had sex with your roommate/flatmate?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">69.</span>
+                <input type="checkbox" id="question69" name="question69">
+                <label for="question69">Stolen original charger at a house party?</label>
+            </div>
+            <div class="checkbox-item">
+                <span class="checkbox-number">70.</span>
+                <input type="checkbox" id="question70" name="question70">
+                <label for="question70">Been drunk at a house party?</label>
+            </div>
+                             
+            
+            <span id="button-container">
+                    <input class="button" id="reset" type="submit" value="Clear checkboxes">
+                    <input class="button calculate-button" id="submit" type="submit" value="Calculate My Score!"><br><br><br>
+                  </span>
+                </ol>
+            </div>
+        <script>
+        
+        $(document).ready(function() {
+    $("#toShow").hide();
+
+    // Pre-calculate the individual send order
+    function shuffle(array) {
+        var currentIndex = array.length,
+            temporaryValue, randomIndex;
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
+
+    const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70];
+    const order = shuffle(nums);
+
+    // On click of the submit button:
+    $('#submit').click(function(e) {
+        e.preventDefault(); // Prevent default form submission behavior
+
+        // Calculates purity
+        var sinList = $('input[type="checkbox"]:checked');
+        var sins = sinList.length;
+        var purity = Math.floor((70 - sins) / 70 * 100);
+
+        // Shows the score in the h1
+        $('#score').html(purity);
+
+        // Redirect to a different page with the score as a query parameter
+        window.location.href = "results.html?score=" + purity;
+    });
+
+    // On click of the reset button:
+    $('#reset').click(function(e) {
+        e.preventDefault(); // Prevent default form submission behavior
+        $('input[type="checkbox"]').prop('checked', false);
+    });
+});
+        </script>
+    </body>
+</html>
